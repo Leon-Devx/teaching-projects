@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpaceshipShootAction : MonoBehaviour
 {
     [SerializeField] private GameObject _projectile;
+    [SerializeField] private GameObject _muzzleEffect;
     [SerializeField] private Transform[] _spawnLocationsArray = new Transform[2];
     [SerializeField] private float _projectileSpawnDelay = 0.5f;
 
@@ -34,5 +35,6 @@ public class SpaceshipShootAction : MonoBehaviour
         _spawnLocationIndex++;
         _spawnPosition = _spawnLocationsArray[_spawnLocationIndex % 2].position;
         Instantiate(_projectile, _spawnPosition, _projectile.transform.localRotation);
+        Instantiate(_muzzleEffect, _spawnPosition, _muzzleEffect.transform.localRotation);
     }
 }

@@ -9,11 +9,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7652004033026765504}
-  - component: {fileID: 798308647234729670}
   - component: {fileID: 5356234571631066574}
   - component: {fileID: 8487579460025684661}
+  - component: {fileID: 798308647234729670}
+  - component: {fileID: 6744070270201829530}
+  - component: {fileID: 7240598487320933460}
+  - component: {fileID: 4824468988978706490}
   m_Layer: 0
-  m_Name: Asteroid_Small
+  m_Name: Asteroid_Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,19 +38,6 @@ Transform:
   - {fileID: 6360094483199854523}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &798308647234729670
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5134559424912623278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4889518f185dd764790b9f14767eba15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _health: 1
 --- !u!50 &5356234571631066574
 Rigidbody2D:
   serializedVersion: 4
@@ -120,6 +110,62 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
+--- !u!114 &798308647234729670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5134559424912623278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4889518f185dd764790b9f14767eba15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 1
+  _minSpeed: 1.5
+  _maxSpeed: 3.5
+  _moveUp: 0
+--- !u!114 &6744070270201829530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5134559424912623278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 203133ae81c2bd94ea95acf1ffe1703f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _minRotation: -0.75
+  _maxRotation: 0.75
+--- !u!114 &7240598487320933460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5134559424912623278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a99054f875190ea4cb8083200c69e3f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxSizePercentage: 35
+--- !u!114 &4824468988978706490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5134559424912623278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da0235225e58da1419fac72a1ca868a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _despawnTimer: 10
 --- !u!1 &6834807746575227254
 GameObject:
   m_ObjectHideFlags: 0
