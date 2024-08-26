@@ -1,6 +1,7 @@
 using UnityEngine;
+using Random = UnityEngine.Random;
 
-public class Asteroid : MonoBehaviour
+public class Asteroid : Enemy
 {
     [SerializeField] private int _health = 1;
     [SerializeField] [Range(0, 20f)] private float _minSpeed = 3f;
@@ -40,6 +41,9 @@ public class Asteroid : MonoBehaviour
     private void OnHealthReduced()
     {
         if (_health <= 0)
+        {
+            DestroyActionPerformed();
             Destroy(gameObject);
+        }
     }
 }
