@@ -10,10 +10,12 @@ public class LivesPresenter : MonoBehaviour
     private void Awake()
     {
         _spaceship = FindObjectOfType<Spaceship>();
-        _spaceship.OnTakeDamage += UpdateLives;
-        _spaceship.OnDestroyed += SetLivesToZero;
+        _spaceship.OnUpdateLives += UpdateLives;
     }
 
-    private void UpdateLives(Spaceship spaceship) => _livesText.text = $"X{spaceship.Lives}";
-    private void SetLivesToZero() => _livesText.text = "X0";
+    private void UpdateLives(int lives)
+    {
+        if (lives < 0) lives = 0;
+        _livesText.text = $"X{lives}";
+    }
 }

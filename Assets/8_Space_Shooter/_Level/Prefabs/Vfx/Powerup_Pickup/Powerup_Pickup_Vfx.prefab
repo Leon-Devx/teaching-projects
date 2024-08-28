@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2258182837852459166}
   - component: {fileID: 607262760071409544}
   - component: {fileID: 7059163180133843842}
+  - component: {fileID: 6127877525378099746}
   m_Layer: 0
   m_Name: Powerup_Pickup_Vfx
   m_TagString: Untagged
@@ -71,10 +72,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 273765203
+  m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2121584226, guid: 6c106b0ca5a4f2a4cb824b4311ac4185, type: 3}
+  m_Sprite: {fileID: 1800626091, guid: 6c106b0ca5a4f2a4cb824b4311ac4185, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -106,3 +107,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6127877525378099746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5371769217248221017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da0235225e58da1419fac72a1ca868a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _despawnTimer: 3

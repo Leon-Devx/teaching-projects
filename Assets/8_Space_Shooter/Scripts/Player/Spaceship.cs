@@ -4,6 +4,7 @@ using UnityEngine;
 public class Spaceship : MonoBehaviour, IPlayer
 {
     public event Action<Spaceship> OnTakeDamage;
+    public event Action<int> OnUpdateLives;
     public event Action OnDestroyed;
 
     [SerializeField] private int _lives = 3;
@@ -14,7 +15,15 @@ public class Spaceship : MonoBehaviour, IPlayer
 
     #region Properties
 
-    public int Lives => _lives;
+    public int Lives
+    {
+        get => _lives;
+        set
+        {
+            _lives = value;
+            OnUpdateLives?.Invoke(_lives);
+        }
+    }
 
     #endregion
 
@@ -33,7 +42,7 @@ public class Spaceship : MonoBehaviour, IPlayer
 
     private void InstantDestruct()
     {
-        _lives = 0;
+        Lives = 0;
         Destruct();
     }
 
@@ -42,8 +51,8 @@ public class Spaceship : MonoBehaviour, IPlayer
         if (_destructVfx != null)
             Instantiate(_destructVfx, transform.localPosition, _destructVfx.rotation);
         
-        _lives -= 1;
-        if (_lives < 0)
+        Lives -= 1;
+        if (Lives < 0)
         {
             gameObject.SetActive(false);
             OnDestroyed.Invoke();
