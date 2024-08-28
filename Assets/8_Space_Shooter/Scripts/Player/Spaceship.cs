@@ -19,6 +19,8 @@ public class Spaceship : MonoBehaviour, IPlayer
     #endregion
 
     private void Awake() => _invincibilityAction = GetComponent<InvincibilityAction>();
+    private void OnEnable() => SettingsUI.OnAnyClickRestartButton += InstantDestruct;
+    private void OnDisable() => SettingsUI.OnAnyClickRestartButton -= InstantDestruct;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -29,17 +31,25 @@ public class Spaceship : MonoBehaviour, IPlayer
         }
     }
 
+    private void InstantDestruct()
+    {
+        _lives = 0;
+        Destruct();
+    }
+
     private void Destruct()
     {
-        if (_lives <= 0)
+        if (_destructVfx != null)
+            Instantiate(_destructVfx, transform.localPosition, _destructVfx.rotation);
+        
+        _lives -= 1;
+        if (_lives < 0)
         {
             gameObject.SetActive(false);
             OnDestroyed.Invoke();
             return;
         }
-        if (_destructVfx != null)
-            Instantiate(_destructVfx, transform.localPosition, _destructVfx.rotation);
-        _lives -= 1;
+
         OnTakeDamage?.Invoke(this);
         transform.localPosition = _respawnPosition;
     }

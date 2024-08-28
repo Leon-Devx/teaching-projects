@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class SpaceshipMovement2D : MonoBehaviour
 {
@@ -34,6 +35,8 @@ public class SpaceshipMovement2D : MonoBehaviour
         
         Vector3 currentPosition = transform.localPosition;
         Vector3 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        if (EventSystem.current.IsPointerOverGameObject())
+            newPosition = transform.localPosition;
         newPosition.z = currentPosition.z;
         float movementSpeed = _speed * Time.deltaTime;
         currentPosition = Vector3.MoveTowards(currentPosition, newPosition, movementSpeed);
