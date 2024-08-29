@@ -13,6 +13,7 @@ public class Spaceship : MonoBehaviour, IPlayer
 
     private InvincibilityAction _invincibilityAction;
     private ShieldAction _shieldAction;
+    private SpaceshipShootAction _shootAction;
 
     #region Properties
 
@@ -27,6 +28,7 @@ public class Spaceship : MonoBehaviour, IPlayer
     }
 
     public ShieldAction ShieldAction => _shieldAction;
+    public SpaceshipShootAction ShootAction => _shootAction;
 
     #endregion
 
@@ -34,6 +36,7 @@ public class Spaceship : MonoBehaviour, IPlayer
     {
         _invincibilityAction = GetComponent<InvincibilityAction>();
         _shieldAction = GetComponent<ShieldAction>();
+        _shootAction = GetComponent<SpaceshipShootAction>();
     }
 
     private void OnEnable() => SettingsUI.OnAnyClickRestartButton += InstantDestruct;

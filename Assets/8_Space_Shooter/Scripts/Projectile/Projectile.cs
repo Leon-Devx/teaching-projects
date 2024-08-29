@@ -13,7 +13,7 @@ public class Projectile : MonoBehaviour, IPlayer
     {
         Vector3 newPosition = transform.localPosition;
         float speed = _speed * Time.deltaTime;
-        newPosition.y += speed;
+        newPosition += transform.up * speed; 
         transform.localPosition = newPosition;
     }
 }
