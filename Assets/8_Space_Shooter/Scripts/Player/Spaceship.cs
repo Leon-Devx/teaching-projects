@@ -73,5 +73,8 @@ public class Spaceship : MonoBehaviour, IPlayer
 
         OnTakeDamage?.Invoke(this);
         transform.localPosition = _respawnPosition;
+
+        ShootAction.ProjectileCount -= 2;
+        ShootAction.AttackSpeedPowerups -= 2;
     }
 }
