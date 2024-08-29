@@ -107,3 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67c5494400382584b9cc9392d0609613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _dropSpeed: -1.5
+  _collectVfx: {fileID: 2258182837852459166, guid: 8207a17ef276e304fb246374f15cf440,
+    type: 3}
+  _floatingShield: {fileID: 0}

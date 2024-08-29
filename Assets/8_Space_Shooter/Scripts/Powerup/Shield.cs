@@ -10,5 +10,8 @@ public class Shield : Powerup
         
         if (_floatingShield != null)
             Instantiate(_floatingShield, transform.localPosition, _floatingShield.rotation);
+        
+        if (spaceship.ShieldAction != null)
+            spaceship.ShieldAction.ActivateShield();
     }
 }

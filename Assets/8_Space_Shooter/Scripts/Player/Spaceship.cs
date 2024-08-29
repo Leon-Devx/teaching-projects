@@ -12,6 +12,7 @@ public class Spaceship : MonoBehaviour, IPlayer
     [SerializeField] private Vector2 _respawnPosition;
 
     private InvincibilityAction _invincibilityAction;
+    private ShieldAction _shieldAction;
 
     #region Properties
 
@@ -25,15 +26,23 @@ public class Spaceship : MonoBehaviour, IPlayer
         }
     }
 
+    public ShieldAction ShieldAction => _shieldAction;
+
     #endregion
 
-    private void Awake() => _invincibilityAction = GetComponent<InvincibilityAction>();
+    private void Awake()
+    {
+        _invincibilityAction = GetComponent<InvincibilityAction>();
+        _shieldAction = GetComponent<ShieldAction>();
+    }
+
     private void OnEnable() => SettingsUI.OnAnyClickRestartButton += InstantDestruct;
     private void OnDisable() => SettingsUI.OnAnyClickRestartButton -= InstantDestruct;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (_invincibilityAction.IsInvincible) return;
+        if (_shieldAction.IsShieldEnabled) return;
         if (other.TryGetComponent(out IDamageDealer damageDealer))
         {
             Destruct();
@@ -50,7 +59,7 @@ public class Spaceship : MonoBehaviour, IPlayer
     {
         if (_destructVfx != null)
             Instantiate(_destructVfx, transform.localPosition, _destructVfx.rotation);
-        
+
         Lives -= 1;
         if (Lives < 0)
         {

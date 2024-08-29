@@ -361,6 +361,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b32703d592858c44ca419405a1f64e82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _shieldDuration: 8
+  _shieldBlinkDelay: 0.15
+  _blinkCount: 6
+  _shield: {fileID: 1086648754321128962}
 --- !u!114 &3059568892255977720
 MonoBehaviour:
   m_ObjectHideFlags: 0
