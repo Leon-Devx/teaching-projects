@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class Spaceship : MonoBehaviour, IPlayer
 {
+    private static Spaceship _instance;
+    public static Spaceship Instance => _instance;
+    
     public event Action<Spaceship> OnTakeDamage;
     public event Action<int> OnUpdateLives;
     public event Action OnDestroyed;
@@ -34,6 +37,11 @@ public class Spaceship : MonoBehaviour, IPlayer
 
     private void Awake()
     {
+        if (_instance == null)
+            _instance = this;
+        else
+            Destroy(gameObject);
+
         _invincibilityAction = GetComponent<InvincibilityAction>();
         _shieldAction = GetComponent<ShieldAction>();
         _shootAction = GetComponent<SpaceshipShootAction>();

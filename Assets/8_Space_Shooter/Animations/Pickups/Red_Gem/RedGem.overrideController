@@ -1,0 +1,13 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: RedGem
+  m_Controller: {fileID: 9100000, guid: 0a71fa6001c1f3948935bbe93b790f26, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 23151b7c5772876419361003e14bc8f3, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 5d9715403f670384a953daae56ac0c5b, type: 2}

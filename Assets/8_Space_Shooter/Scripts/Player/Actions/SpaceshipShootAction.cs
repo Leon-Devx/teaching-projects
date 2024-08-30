@@ -38,6 +38,9 @@ public class SpaceshipShootAction : MonoBehaviour
         set => _projectileCount = Mathf.Clamp(value, 1, _projectileSpawnerSetArray.Length);
     }
 
+    public int MaxAttackSpeedPowerups => _maxAttackSpeedPowerups;
+    public int MaxProjectileCount => _projectileSpawnerSetArray.Length;
+
     #endregion
 
     private void Update()

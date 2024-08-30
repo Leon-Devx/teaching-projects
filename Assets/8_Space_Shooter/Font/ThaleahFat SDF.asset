@@ -2470,9 +2470,9 @@ Material:
     m_Floats:
     - _Ambient: 0.5
     - _Bevel: 0.5
-    - _BevelClamp: 0
+    - _BevelClamp: 0.506
     - _BevelOffset: 0
-    - _BevelRoundness: 0
+    - _BevelRoundness: 0.655
     - _BevelWidth: 0
     - _BumpFace: 0
     - _BumpOutline: 0
@@ -2495,7 +2495,7 @@ Material:
     - _OutlineUVSpeedY: 0
     - _OutlineWidth: 0.3
     - _PerspectiveFilter: 0.875
-    - _Reflectivity: 10
+    - _Reflectivity: 10.79
     - _ScaleRatioA: 0.8888889
     - _ScaleRatioB: 0.54444444
     - _ScaleRatioC: 0.54444444
@@ -2503,7 +2503,7 @@ Material:
     - _ScaleY: 1
     - _ShaderFlags: 0
     - _Sharpness: 0
-    - _SpecularPower: 2
+    - _SpecularPower: 1.07
     - _Stencil: 0
     - _StencilComp: 8
     - _StencilOp: 0

@@ -1,0 +1,13 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ScorePickup
+  m_Controller: {fileID: 9100000, guid: f3e849a82ef16d34a8dbfd2d25cbdb92, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 57196e120da52c840a2f9a6f2c05bc7a, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 4a03a75d2fe0a1a48a2cd03a04aee349, type: 2}

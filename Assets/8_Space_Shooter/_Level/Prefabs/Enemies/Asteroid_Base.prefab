@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6744070270201829530}
   - component: {fileID: 7240598487320933460}
   - component: {fileID: 4824468988978706490}
+  - component: {fileID: -5232054064020577108}
   m_Layer: 0
   m_Name: Asteroid_Base
   m_TagString: Untagged
@@ -122,6 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4889518f185dd764790b9f14767eba15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _score: 5
   _health: 1
   _minSpeed: 1.5
   _maxSpeed: 3.5
@@ -166,6 +168,46 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _despawnTimer: 10
+--- !u!114 &-5232054064020577108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5134559424912623278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b9df1c0896c5f43adf77f4cc58f8a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _droppableList:
+  - _dropChance: 20
+    _droppableObj: {fileID: 1421201143887863995, guid: 281fc30c5d9e8c846acf6969f7f70ce4,
+      type: 3}
+  - _dropChance: 15
+    _droppableObj: {fileID: 6579470950313015047, guid: 552e1d29155782446a7f3e84d5dc8c22,
+      type: 3}
+  - _dropChance: 15
+    _droppableObj: {fileID: 802224375477020063, guid: 4ca1f9fbe8f98a94384a5c65df33860c,
+      type: 3}
+  - _dropChance: 25
+    _droppableObj: {fileID: 1960120415821906144, guid: 8398d888fe662ff4b9de389b67c02909,
+      type: 3}
+  _powerupDropChance: 10
+  _pickupDroppableList:
+  - _dropChance: 30
+    _droppableObj: {fileID: 4830393647750681918, guid: 354f1dfca6a2bb6418f16df6ccde0540,
+      type: 3}
+  - _dropChance: 15
+    _droppableObj: {fileID: 4830393647750681918, guid: b841a5b60063bf3498c897a97fe075c4,
+      type: 3}
+  - _dropChance: 8
+    _droppableObj: {fileID: 4830393647750681918, guid: 623c2e73663b99141b09818f3b049d68,
+      type: 3}
+  - _dropChance: 3
+    _droppableObj: {fileID: 4830393647750681918, guid: e235e4ef9055e5b44bec98715ece1f5e,
+      type: 3}
+  _pickupDropChance: 10
 --- !u!1 &6834807746575227254
 GameObject:
   m_ObjectHideFlags: 0
