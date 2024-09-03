@@ -1,4 +1,5 @@
 using System;
+using Lean.Pool;
 using UnityEngine;
 
 public class SpaceshipShootAction : MonoBehaviour
@@ -94,9 +95,9 @@ public class SpaceshipShootAction : MonoBehaviour
     {
         Vector3 spawnPosition = spawnTransform.position;
         Vector3 rotation = spawnTransform.localRotation.eulerAngles;
-        Instantiate(_projectile, spawnPosition, Quaternion.Euler(rotation));
+        LeanPool.Spawn(_projectile, spawnPosition, Quaternion.Euler(rotation));
         if (spawnMuzzleEffect)
-            Instantiate(_muzzleEffect, spawnPosition, _muzzleEffect.transform.localRotation);
+            LeanPool.Spawn(_muzzleEffect, spawnPosition, _muzzleEffect.transform.localRotation);
     }
 }
 

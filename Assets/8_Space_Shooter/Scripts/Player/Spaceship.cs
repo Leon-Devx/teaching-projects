@@ -1,4 +1,5 @@
 using System;
+using Lean.Pool;
 using UnityEngine;
 
 public class Spaceship : MonoBehaviour, IPlayer
@@ -69,7 +70,7 @@ public class Spaceship : MonoBehaviour, IPlayer
     private void Destruct()
     {
         if (_destructVfx != null)
-            Instantiate(_destructVfx, transform.localPosition, _destructVfx.rotation);
+            LeanPool.Spawn(_destructVfx.gameObject, transform.localPosition, _destructVfx.rotation);
 
         Lives -= 1;
         if (Lives < 0)

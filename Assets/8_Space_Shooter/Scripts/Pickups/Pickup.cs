@@ -1,3 +1,4 @@
+using Lean.Pool;
 using TMPro;
 using UnityEngine;
 
@@ -14,7 +15,7 @@ public class Pickup : Powerup
 
         if (_floatingText != null)
         {
-            GameObject textObj = Instantiate(_floatingText, transform.localPosition, _floatingText.transform.rotation);
+            GameObject textObj = LeanPool.Spawn(_floatingText, transform.localPosition, _floatingText.transform.rotation);
             TextMeshPro spawnedText = textObj.GetComponentInChildren<TextMeshPro>();
             spawnedText.text = $"+{_score}";
         }

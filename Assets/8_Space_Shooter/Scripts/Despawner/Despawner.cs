@@ -1,4 +1,5 @@
 using System.Collections;
+using Lean.Pool;
 using UnityEngine;
 
 public class Despawner : MonoBehaviour
@@ -15,12 +16,15 @@ public class Despawner : MonoBehaviour
 
     private void OnEnable()
     {
+        TryToStopCoroutine();
         _coroutine = StartCoroutine(Despawn());
     }
 
-    private void OnDisable()
+    private void OnDisable() => TryToStopCoroutine();
+
+    private void TryToStopCoroutine()
     {
-        if (_coroutine == null)
+        if (_coroutine != null)
         {
             StopCoroutine(_coroutine);
             _coroutine = null;
@@ -30,6 +34,6 @@ public class Despawner : MonoBehaviour
     private IEnumerator Despawn()
     {
         yield return _wait;
-        gameObject.SetActive(false);
+        LeanPool.Despawn(gameObject);
     }
 }

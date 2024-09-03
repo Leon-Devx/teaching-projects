@@ -1,3 +1,4 @@
+using Lean.Pool;
 using UnityEngine;
 
 public class DestructVfxAction : MonoBehaviour
@@ -12,6 +13,6 @@ public class DestructVfxAction : MonoBehaviour
     private void SpawnVfx()
     {
         Vector2 spawnPosition = transform.localPosition;
-        Instantiate(_destructEffect, spawnPosition, _destructEffect.transform.rotation);
+        LeanPool.Spawn(_destructEffect, spawnPosition, _destructEffect.transform.rotation);
     }
 }

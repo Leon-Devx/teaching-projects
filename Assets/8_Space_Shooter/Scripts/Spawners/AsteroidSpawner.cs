@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Lean.Pool;
 using UnityEngine;
 
 public class AsteroidSpawner : MonoBehaviour
@@ -35,7 +36,7 @@ public class AsteroidSpawner : MonoBehaviour
             Vector2 spawnPosition = new Vector2(xPosition, yPosition);
 
             int asteroidIndex = Random.Range(0, _asteroidList.Count);
-            Instantiate(_asteroidList[asteroidIndex], spawnPosition,
+            LeanPool.Spawn(_asteroidList[asteroidIndex].gameObject, spawnPosition,
                 _asteroidList[asteroidIndex].transform.localRotation);
 
             yield return _wait;

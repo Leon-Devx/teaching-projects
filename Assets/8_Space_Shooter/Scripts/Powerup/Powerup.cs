@@ -1,3 +1,4 @@
+using Lean.Pool;
 using UnityEngine;
 
 public class Powerup : MonoBehaviour
@@ -26,6 +27,6 @@ public class Powerup : MonoBehaviour
     protected virtual void OnCollectPowerup(Spaceship spaceship)
     {
         if (_collectVfx != null)
-            Instantiate(_collectVfx, transform.localPosition, _collectVfx.rotation);
+            LeanPool.Spawn(_collectVfx.gameObject, transform.localPosition, _collectVfx.rotation);
     }
 }

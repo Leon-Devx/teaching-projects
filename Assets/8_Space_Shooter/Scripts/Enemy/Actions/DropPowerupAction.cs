@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Lean.Pool;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -27,7 +28,7 @@ public class DropPowerupAction : MonoBehaviour
             Transform objectToSpawn = _droppableList[randomDroppable].TryGetPowerupToSpawn();
             if (objectToSpawn != null)
             {
-                Instantiate(objectToSpawn, transform.position, objectToSpawn.rotation);
+                LeanPool.Spawn(objectToSpawn.gameObject, transform.position, objectToSpawn.rotation);
                 return;
             }
         }
@@ -43,7 +44,7 @@ public class DropPowerupAction : MonoBehaviour
             int randomDroppable = Random.Range(0, _pickupDroppableList.Count);
             Transform objectToSpawn = _pickupDroppableList[randomDroppable].TryGetPickupToSpawn();
             if (objectToSpawn != null)
-                Instantiate(objectToSpawn, transform.position, objectToSpawn.rotation);
+                LeanPool.Spawn(objectToSpawn.gameObject, transform.position, objectToSpawn.rotation);
         }
     }
 }

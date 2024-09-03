@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Lean.Pool;
 using UnityEngine;
 
 public class ExtraProjectile : Powerup
@@ -12,6 +13,6 @@ public class ExtraProjectile : Powerup
         spaceship.ShootAction.ProjectileCount++;
 
         if (_floatingPlusOneProjectile != null)
-            Instantiate(_floatingPlusOneProjectile, transform.localPosition, _floatingPlusOneProjectile.rotation);
+            LeanPool.Spawn(_floatingPlusOneProjectile.gameObject, transform.localPosition, _floatingPlusOneProjectile.rotation);
     }
 }

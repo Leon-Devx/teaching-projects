@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -13,8 +11,11 @@ public class SpaceshipMovement2D : MonoBehaviour
     private float _spaceshipWidth;
     private float _spaceshipHeight;
 
+    private Camera _mainCamera;
+
     private void Awake()
     {
+        _mainCamera = Camera.main;
         _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         _spaceshipWidth = _spriteRenderer.bounds.size.x / 2f;
         _spaceshipHeight = _spriteRenderer.bounds.size.y / 2f;
@@ -64,7 +65,7 @@ public class SpaceshipMovement2D : MonoBehaviour
     private void ClampPlayerPosition()
     {
         var screenBounds =
-            Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
+            _mainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, _mainCamera.transform.position.z));
         float clampedXValue =
             Mathf.Clamp(transform.localPosition.x, -screenBounds.x + _spaceshipWidth,
                 screenBounds.x - _spaceshipWidth);

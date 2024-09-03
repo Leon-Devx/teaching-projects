@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Lean.Pool;
 using UnityEngine;
 
 public class SplitAction : MonoBehaviour
@@ -46,7 +47,7 @@ public class SplitAction : MonoBehaviour
 
             Vector2 spawnPosition = new Vector2(randomXSpawnPosition, randomYSpawnPosition);
             int randomUnit = Random.Range(0, _smallerUnitList.Count);
-            Instantiate(_smallerUnitList[randomUnit], spawnPosition, Quaternion.identity);
+            LeanPool.Spawn(_smallerUnitList[randomUnit], spawnPosition, Quaternion.identity);
         }
     }
 }
