@@ -6,6 +6,7 @@ public class SpaceshipShootAction : MonoBehaviour
 {
     [SerializeField] private GameObject _projectile;
     [SerializeField] private GameObject _muzzleEffect;
+    [SerializeField] private bool _spawnMuzzleEffect;
     [SerializeField] private float _projectileSpawnDelay = 0.5f;
 
     [Header("Projectile Bonuses (Attack Speed)")] [SerializeField]
@@ -44,6 +45,8 @@ public class SpaceshipShootAction : MonoBehaviour
 
     #endregion
 
+    private void Awake() => _projectileSpawnTimer = GetAttackRateTimer();
+
     private void Update()
     {
         _projectileSpawnTimer -= Time.deltaTime;
@@ -72,9 +75,17 @@ public class SpaceshipShootAction : MonoBehaviour
 
     private void SpawnIndividualProjectiles()
     {
-        _spawnLocationIndex++;
-        _projectileSpawnerSet = _projectileSpawnerSetArray[_projectileCount - 1];
-        InitSpawnProjectile(_projectileSpawnerSet.SpawnLocationsArray[_spawnLocationIndex % 2], true);
+        if (_projectileSpawnerSetArray.Length > 1)
+        {
+            _spawnLocationIndex++;
+            _projectileSpawnerSet = _projectileSpawnerSetArray[_projectileCount - 1];
+            InitSpawnProjectile(_projectileSpawnerSet.SpawnLocationsArray[_spawnLocationIndex % 2], true);
+        }
+        else
+        {
+            _projectileSpawnerSet = _projectileSpawnerSetArray[0];
+            InitSpawnProjectile(_projectileSpawnerSet.SpawnLocationsArray[0], _spawnMuzzleEffect);
+        }
     }
 
     private void SpawnMultipleProjectiles()
@@ -87,7 +98,7 @@ public class SpaceshipShootAction : MonoBehaviour
     {
         for (int i = 0; i < _projectileSpawnerSet.SpawnLocationsArray.Length; i++)
         {
-            InitSpawnProjectile(_projectileSpawnerSet.SpawnLocationsArray[i], i < 2);
+            InitSpawnProjectile(_projectileSpawnerSet.SpawnLocationsArray[i], i< 2);
         }
     }
 
@@ -96,7 +107,7 @@ public class SpaceshipShootAction : MonoBehaviour
         Vector3 spawnPosition = spawnTransform.position;
         Vector3 rotation = spawnTransform.localRotation.eulerAngles;
         LeanPool.Spawn(_projectile, spawnPosition, Quaternion.Euler(rotation));
-        if (spawnMuzzleEffect)
+        if (spawnMuzzleEffect && _muzzleEffect != null)
             LeanPool.Spawn(_muzzleEffect, spawnPosition, _muzzleEffect.transform.localRotation);
     }
 }
@@ -104,9 +115,6 @@ public class SpaceshipShootAction : MonoBehaviour
 [Serializable]
 public struct ProjectileSpawnerSet
 {
-    [SerializeField] private int _index;
     [SerializeField] private Transform[] _spawnLocationsArray;
-
-    public int Index => _index;
     public Transform[] SpawnLocationsArray => _spawnLocationsArray;
 }

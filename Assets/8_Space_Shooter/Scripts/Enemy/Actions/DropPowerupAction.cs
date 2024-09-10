@@ -12,15 +12,16 @@ public class DropPowerupAction : MonoBehaviour
 
     private Enemy _enemy;
 
-    private void Awake() => _enemy = GetComponent<Enemy>();
-
-    private void OnEnable()
+    private void Awake()
     {
+        _enemy = GetComponent<Enemy>();
         _enemy.OnDestroyed += TryDropPowerup;
     }
 
-    private void TryDropPowerup()
+    private void TryDropPowerup(Enemy enemy)
     {
+        if (enemy.IsDestroyedByCollisionWithPlayerSpaceship) return;
+        
         float randomValue = Random.Range(0f, 100f);
         if (_droppableList.Count > 0 && _powerupDropChance >= randomValue)
         {

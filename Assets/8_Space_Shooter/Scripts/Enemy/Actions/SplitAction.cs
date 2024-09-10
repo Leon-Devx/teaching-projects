@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using Lean.Pool;
 using UnityEngine;
@@ -20,17 +19,14 @@ public class SplitAction : MonoBehaviour
     {
         _asteroid = GetComponent<Asteroid>();
         _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-    }
-
-    private void OnEnable()
-    {
+        
         _asteroid.OnDestroyed += Split;
     }
 
-    private void Split()
+    private void Split(Enemy enemy)
     {
         int splitAmount = Random.Range(_minSplitAmount, _maxSplitAmount + 1);
-
+        
         for (int i = 0; i < splitAmount; i++)
         {
             Vector2 spriteExtents = _spriteRenderer.sprite.bounds.extents;
@@ -47,7 +43,7 @@ public class SplitAction : MonoBehaviour
 
             Vector2 spawnPosition = new Vector2(randomXSpawnPosition, randomYSpawnPosition);
             int randomUnit = Random.Range(0, _smallerUnitList.Count);
-            LeanPool.Spawn(_smallerUnitList[randomUnit], spawnPosition, Quaternion.identity);
+            LeanPool.Spawn(_smallerUnitList[randomUnit].gameObject, spawnPosition, Quaternion.identity);
         }
     }
 }

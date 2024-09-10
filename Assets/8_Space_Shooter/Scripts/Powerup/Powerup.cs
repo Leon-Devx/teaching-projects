@@ -20,7 +20,7 @@ public class Powerup : MonoBehaviour
         if (other.TryGetComponent(out Spaceship spaceship))
         {
             OnCollectPowerup(spaceship);
-            Destroy(gameObject);
+            LeanPool.Despawn(gameObject);
         }
     }
 

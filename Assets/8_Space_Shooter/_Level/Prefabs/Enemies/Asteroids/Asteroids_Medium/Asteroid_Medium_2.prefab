@@ -141,8 +141,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1018c5c9bf99bc94eb5af6129f26967d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minSplitAmount: 2
-  _maxSplitAmount: 3
+  _minSplitAmount: 1
+  _maxSplitAmount: 2
   _smallerUnitList:
   - {fileID: 6339782721720576218, guid: fb702ddd0627d514a9280c37b5a707a4, type: 3}
   - {fileID: 6339782721720576218, guid: 63607af80fdb2a54185b8084a35954c6, type: 3}

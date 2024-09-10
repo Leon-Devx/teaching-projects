@@ -104,7 +104,6 @@ GameObject:
   - component: {fileID: 4961613018125498684}
   - component: {fileID: 5018899759687870213}
   - component: {fileID: 4462562853502745137}
-  - component: {fileID: 6495716360284875208}
   m_Layer: 0
   m_Name: Shield
   m_TagString: Untagged
@@ -200,41 +199,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!58 &6495716360284875208
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1086648754321128962}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.30500004
 --- !u!1 &1145387206400130471
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,7 +279,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 1145387206400130471}
   m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -361,7 +325,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -444,36 +408,32 @@ MonoBehaviour:
     type: 3}
   _muzzleEffect: {fileID: 1022426485417452, guid: fabf86a810725434ea291c7649deee6f,
     type: 3}
+  _spawnMuzzleEffect: 1
   _projectileSpawnDelay: 0.5
   _attackSpeedPowerups: 0
   _attackSpeedPowerupPercentage: 20
   _maxAttackSpeedPowerups: 10
   _projectileCount: 1
   _projectileSpawnerSetArray:
-  - _index: 0
-    _spawnLocationsArray:
+  - _spawnLocationsArray:
     - {fileID: 8139276523883503557}
     - {fileID: 1361867124963439522}
-  - _index: 0
-    _spawnLocationsArray:
+  - _spawnLocationsArray:
     - {fileID: 8139276523883503557}
     - {fileID: 1361867124963439522}
-  - _index: 0
-    _spawnLocationsArray:
+  - _spawnLocationsArray:
     - {fileID: 8139276523883503557}
     - {fileID: 1361867124963439522}
     - {fileID: 133390588809378899}
     - {fileID: 2774431611339215689}
-  - _index: 0
-    _spawnLocationsArray:
+  - _spawnLocationsArray:
     - {fileID: 8139276523883503557}
     - {fileID: 1361867124963439522}
     - {fileID: 133390588809378899}
     - {fileID: 2774431611339215689}
     - {fileID: 2350304401701911302}
     - {fileID: 4558225292599242661}
-  - _index: 0
-    _spawnLocationsArray:
+  - _spawnLocationsArray:
     - {fileID: 8139276523883503557}
     - {fileID: 1361867124963439522}
     - {fileID: 133390588809378899}
@@ -482,8 +442,7 @@ MonoBehaviour:
     - {fileID: 4558225292599242661}
     - {fileID: 1753801375792131919}
     - {fileID: 7318237054171760186}
-  - _index: 0
-    _spawnLocationsArray:
+  - _spawnLocationsArray:
     - {fileID: 8139276523883503557}
     - {fileID: 1361867124963439522}
     - {fileID: 133390588809378899}
@@ -494,8 +453,7 @@ MonoBehaviour:
     - {fileID: 7318237054171760186}
     - {fileID: 8468961758216330170}
     - {fileID: 4615578548074446924}
-  - _index: 0
-    _spawnLocationsArray:
+  - _spawnLocationsArray:
     - {fileID: 8139276523883503557}
     - {fileID: 1361867124963439522}
     - {fileID: 133390588809378899}
@@ -508,8 +466,7 @@ MonoBehaviour:
     - {fileID: 4615578548074446924}
     - {fileID: 2942967078476982716}
     - {fileID: 5232614717782567994}
-  - _index: 0
-    _spawnLocationsArray:
+  - _spawnLocationsArray:
     - {fileID: 8139276523883503557}
     - {fileID: 1361867124963439522}
     - {fileID: 133390588809378899}
@@ -524,8 +481,7 @@ MonoBehaviour:
     - {fileID: 5232614717782567994}
     - {fileID: 5018564304322728044}
     - {fileID: 466662927704982566}
-  - _index: 0
-    _spawnLocationsArray:
+  - _spawnLocationsArray:
     - {fileID: 8139276523883503557}
     - {fileID: 1361867124963439522}
     - {fileID: 133390588809378899}
@@ -542,8 +498,7 @@ MonoBehaviour:
     - {fileID: 466662927704982566}
     - {fileID: 737333908947640259}
     - {fileID: 9124598112018288435}
-  - _index: 0
-    _spawnLocationsArray:
+  - _spawnLocationsArray:
     - {fileID: 8139276523883503557}
     - {fileID: 1361867124963439522}
     - {fileID: 133390588809378899}
@@ -562,8 +517,7 @@ MonoBehaviour:
     - {fileID: 9124598112018288435}
     - {fileID: 6135491714362109069}
     - {fileID: 7646494124322703278}
-  - _index: 0
-    _spawnLocationsArray:
+  - _spawnLocationsArray:
     - {fileID: 8139276523883503557}
     - {fileID: 1361867124963439522}
     - {fileID: 133390588809378899}
@@ -584,8 +538,7 @@ MonoBehaviour:
     - {fileID: 7646494124322703278}
     - {fileID: 5300908023131341608}
     - {fileID: 8896001641355899993}
-  - _index: 0
-    _spawnLocationsArray:
+  - _spawnLocationsArray:
     - {fileID: 8139276523883503557}
     - {fileID: 1361867124963439522}
     - {fileID: 133390588809378899}
@@ -608,8 +561,7 @@ MonoBehaviour:
     - {fileID: 8896001641355899993}
     - {fileID: 5867544139495528610}
     - {fileID: 7894331387667108553}
-  - _index: 0
-    _spawnLocationsArray:
+  - _spawnLocationsArray:
     - {fileID: 8139276523883503557}
     - {fileID: 1361867124963439522}
     - {fileID: 133390588809378899}
@@ -634,8 +586,7 @@ MonoBehaviour:
     - {fileID: 7894331387667108553}
     - {fileID: 2024720757217379790}
     - {fileID: 8439662606960684085}
-  - _index: 0
-    _spawnLocationsArray:
+  - _spawnLocationsArray:
     - {fileID: 8139276523883503557}
     - {fileID: 1361867124963439522}
     - {fileID: 133390588809378899}
@@ -692,6 +643,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b32703d592858c44ca419405a1f64e82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _health: 3
   _shieldDuration: 8
   _shieldBlinkDelay: 0.15
   _blinkCount: 6

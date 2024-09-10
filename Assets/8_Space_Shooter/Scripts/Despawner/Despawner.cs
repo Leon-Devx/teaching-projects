@@ -34,6 +34,7 @@ public class Despawner : MonoBehaviour
     private IEnumerator Despawn()
     {
         yield return _wait;
-        LeanPool.Despawn(gameObject);
+        if (gameObject.activeSelf)
+            LeanPool.Despawn(gameObject);
     }
 }

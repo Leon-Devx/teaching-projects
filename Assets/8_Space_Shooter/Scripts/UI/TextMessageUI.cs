@@ -25,6 +25,8 @@ public class TextMessageUI : MonoBehaviour
     }
 
     private void OnEnable() => _spaceship.OnDestroyed += TryToDisplayGameOverText;
+    private void OnDisable() => _spaceship.OnDestroyed -= TryToDisplayGameOverText;
+    
     private void Start() => StartCoroutine(FlashGameText(_startGame));
 
     private IEnumerator FlashGameText(CanvasGroup canvasGroup)

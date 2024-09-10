@@ -1,3 +1,4 @@
+using Lean.Pool;
 using UnityEngine;
 
 public class AdditionalLife : Powerup
@@ -10,6 +11,6 @@ public class AdditionalLife : Powerup
         spaceship.Lives++;
 
         if (_floatingPlusOneLife != null)
-            Instantiate(_floatingPlusOneLife, transform.localPosition, _floatingPlusOneLife.rotation);
+            LeanPool.Spawn(_floatingPlusOneLife.gameObject, transform.localPosition, _floatingPlusOneLife.rotation);
     }
 }

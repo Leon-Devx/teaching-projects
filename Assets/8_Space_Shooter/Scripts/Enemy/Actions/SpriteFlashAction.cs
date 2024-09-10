@@ -15,10 +15,6 @@ public class SpriteFlashAction : MonoBehaviour
     {
         _enemy = GetComponent<Enemy>();
         _material = _spriteRenderer?.material;
-    }
-
-    private void OnEnable()
-    {
         _enemy.OnDamaged += Flash;
         _enemy.OnDestroyed += Reset;
     }
@@ -33,7 +29,7 @@ public class SpriteFlashAction : MonoBehaviour
         });
     }
 
-    private void Reset()
+    private void Reset(Enemy enemy)
     {
         KillTween();
         _material?.SetFloat(_hitEffectBlend, 0f);

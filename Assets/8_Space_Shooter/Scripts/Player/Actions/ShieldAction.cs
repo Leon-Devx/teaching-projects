@@ -3,6 +3,7 @@ using System.Collections;
 
 public class ShieldAction : MonoBehaviour, IPlayer
 {
+    [SerializeField] private int _health = 3;
     [SerializeField] private float _shieldDuration = 9f;
     [SerializeField] private float _shieldBlinkDelay = .15f;
     [SerializeField] private int _blinkCount = 5;
@@ -12,13 +13,16 @@ public class ShieldAction : MonoBehaviour, IPlayer
     private Coroutine _shieldBlinkCoroutine;
     private WaitForSeconds _waitShieldDuration;
     private WaitForSeconds _waitBlinkDelay;
-    
+
+    private int _totalHealth;
     private bool _isShieldEnabled;
+    private bool _isDeactivating;
 
     private void Awake()
     {
         _waitShieldDuration = new WaitForSeconds(_shieldDuration);
         _waitBlinkDelay = new WaitForSeconds(_shieldBlinkDelay);
+        _totalHealth = _health;
     }
 
     public bool IsShieldEnabled
@@ -29,13 +33,10 @@ public class ShieldAction : MonoBehaviour, IPlayer
 
     public void ActivateShield()
     {
-        if (IsShieldEnabled)
-        {
-            if (_shieldDurationCoroutine != null) StopCoroutine(_shieldDurationCoroutine);
-            if (_shieldBlinkCoroutine != null) StopCoroutine(_shieldBlinkCoroutine);
-        }
-        
+        TryToDisableShield();
+        _health = _totalHealth;
         IsShieldEnabled = true;
+        _isDeactivating = false;
         _shield.SetActive(true);
         _shieldDurationCoroutine = StartCoroutine(ApplyShield());
     }
@@ -48,6 +49,7 @@ public class ShieldAction : MonoBehaviour, IPlayer
 
     private IEnumerator BlinkShield()
     {
+        _isDeactivating = true;
         for (int i = 0; i < _blinkCount; i++)
         {
             _shield.SetActive(false);
@@ -55,7 +57,7 @@ public class ShieldAction : MonoBehaviour, IPlayer
             _shield.SetActive(true);
             yield return _waitBlinkDelay;
         }
-        
+
         DeactivateShield();
     }
 
@@ -63,5 +65,26 @@ public class ShieldAction : MonoBehaviour, IPlayer
     {
         IsShieldEnabled = false;
         _shield.SetActive(false);
+    }
+
+    public void OnShieldHit()
+    {
+        if (_isDeactivating) return;
+
+        _health--;
+        if (_health <= 0)
+        {
+            TryToDisableShield();
+            _shieldBlinkCoroutine = StartCoroutine(BlinkShield());
+        }
+    }
+
+    private void TryToDisableShield()
+    {
+        if (IsShieldEnabled)
+        {
+            if (_shieldDurationCoroutine != null) StopCoroutine(_shieldDurationCoroutine);
+            if (_shieldBlinkCoroutine != null) StopCoroutine(_shieldBlinkCoroutine);
+        }
     }
 }

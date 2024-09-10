@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Lean.Pool;
 using UnityEngine;
 
@@ -18,7 +19,11 @@ public class Spaceship : MonoBehaviour, IPlayer
     private InvincibilityAction _invincibilityAction;
     private ShieldAction _shieldAction;
     private SpaceshipShootAction _shootAction;
+    private Coroutine _collisionCoroutine;
+    private WaitForSeconds _wait;
 
+    private bool _hasCollided = false;
+    
     #region Properties
 
     public int Lives
@@ -46,6 +51,7 @@ public class Spaceship : MonoBehaviour, IPlayer
         _invincibilityAction = GetComponent<InvincibilityAction>();
         _shieldAction = GetComponent<ShieldAction>();
         _shootAction = GetComponent<SpaceshipShootAction>();
+        _wait = new WaitForSeconds(.1f);
     }
 
     private void OnEnable() => SettingsUI.OnAnyClickRestartButton += InstantDestruct;
@@ -53,12 +59,31 @@ public class Spaceship : MonoBehaviour, IPlayer
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (_hasCollided) return;
         if (_invincibilityAction.IsInvincible) return;
-        if (_shieldAction.IsShieldEnabled) return;
         if (other.TryGetComponent(out IDamageDealer damageDealer))
         {
+            _hasCollided = true;
+            if (_collisionCoroutine != null) StopCoroutine(_collisionCoroutine);
+            _collisionCoroutine = StartCoroutine(ResetCollision());
+            
+            if (damageDealer is EnemyProjectile enemyProjectile)
+                enemyProjectile.Despawn();
+            
+            if (_shieldAction.IsShieldEnabled)
+            {
+                _shieldAction.OnShieldHit();
+                return;
+            }
+            
             Destruct();
         }
+    }
+
+    private IEnumerator ResetCollision()
+    {
+        yield return _wait;
+        _hasCollided = false;
     }
 
     private void InstantDestruct()

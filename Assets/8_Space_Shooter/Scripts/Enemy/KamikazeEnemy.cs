@@ -4,6 +4,14 @@ public class KamikazeEnemy : Enemy
 {
     [SerializeField] private float _speed = 30f;
     [SerializeField] private bool _moveUp;
+    
+    private Rigidbody2D _rigidbody2D;
+
+    protected override void Initialize()
+    {
+        base.Initialize();
+        _rigidbody2D = GetComponent<Rigidbody2D>();
+    }
 
     private void Start()
     {
@@ -12,8 +20,8 @@ public class KamikazeEnemy : Enemy
 
     protected override void HandleMovement()
     {
-        Vector2 currPosition = transform.localPosition;
-        currPosition.y += _speed * Time.deltaTime;
-        transform.localPosition = currPosition;
+        Vector2 newPosition = _rigidbody2D.position;
+        newPosition.y += _speed * Time.deltaTime;
+        _rigidbody2D.MovePosition(newPosition);
     }
 }

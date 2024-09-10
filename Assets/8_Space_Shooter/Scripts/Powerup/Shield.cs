@@ -1,3 +1,4 @@
+using Lean.Pool;
 using UnityEngine;
 
 public class Shield : Powerup
@@ -9,7 +10,7 @@ public class Shield : Powerup
         base.OnCollectPowerup(spaceship);
         
         if (_floatingShield != null)
-            Instantiate(_floatingShield, transform.localPosition, _floatingShield.rotation);
+            LeanPool.Spawn(_floatingShield.gameObject, transform.localPosition, _floatingShield.rotation);
         
         if (spaceship.ShieldAction != null)
             spaceship.ShieldAction.ActivateShield();
